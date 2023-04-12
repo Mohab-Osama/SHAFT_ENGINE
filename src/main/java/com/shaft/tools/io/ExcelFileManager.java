@@ -1,8 +1,9 @@
 package com.shaft.tools.io;
 
-import io.github.shafthq.shaft.tools.io.FailureReporter;
-import io.github.shafthq.shaft.tools.io.ReportManagerHelper;
-import io.github.shafthq.shaft.tools.support.JavaHelper;
+import com.shaft.driver.SHAFT;
+import com.shaft.tools.internal.support.JavaHelper;
+import com.shaft.tools.io.internal.FailureReporter;
+import com.shaft.tools.io.internal.ReportManagerHelper;
 import org.apache.poi.EmptyFileException;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
@@ -200,7 +201,7 @@ public class ExcelFileManager {
         row = null;
         cell = null;
         excelFilePath = "";
-        testDataColumnNamePrefix = System.getProperty("testDataColumnNamePrefix");
+        testDataColumnNamePrefix = SHAFT.Properties.pattern.testDataColumnNamePrefix();
     }
 
     private int getRowNumberFromRowName(String sheetName, String rowName) {

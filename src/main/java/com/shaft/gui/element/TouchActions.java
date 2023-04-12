@@ -3,18 +3,19 @@ package com.shaft.gui.element;
 import com.google.common.base.Throwables;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import com.shaft.driver.SHAFT;
+import com.shaft.driver.internal.DriverFactoryHelper;
+import com.shaft.driver.internal.WizardHelpers;
+import com.shaft.gui.element.internal.ElementActionsHelper;
+import com.shaft.gui.element.internal.FluentElementActions;
+import com.shaft.gui.internal.image.ScreenshotManager;
 import com.shaft.tools.io.ReportManager;
+import com.shaft.tools.io.internal.ReportManagerHelper;
+import com.shaft.validation.internal.WebDriverElementValidationsBuilder;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import io.github.shafthq.shaft.driver.DriverFactoryHelper;
-import io.github.shafthq.shaft.driver.WizardHelpers;
-import io.github.shafthq.shaft.gui.element.ElementActionsHelper;
-import io.github.shafthq.shaft.gui.element.FluentElementActions;
-import io.github.shafthq.shaft.gui.image.ScreenshotManager;
-import io.github.shafthq.shaft.tools.io.ReportManagerHelper;
-import io.github.shafthq.shaft.validations.WebDriverElementValidationsBuilder;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.*;
 
@@ -24,13 +25,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import static io.github.shafthq.shaft.gui.element.ElementActionsHelper.formatLocatorToString;
+import static com.shaft.gui.element.internal.ElementActionsHelper.formatLocatorToString;
 import static java.util.Arrays.asList;
 
 @SuppressWarnings({"unused"})
 public class TouchActions {
     private static final int DEFAULT_NUMBER_OF_ATTEMPTS_TO_SCROLL_TO_ELEMENT = 5;
-    private static final boolean CAPTURE_CLICKED_ELEMENT_TEXT = Boolean.parseBoolean(System.getProperty("captureClickedElementText"));
+    private static final boolean CAPTURE_CLICKED_ELEMENT_TEXT = SHAFT.Properties.reporting.captureElementName();
 
     public TouchActions(WebDriver driver) {
         new TouchActions();
