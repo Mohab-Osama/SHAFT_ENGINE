@@ -144,7 +144,8 @@ public class LightHouseGenerateReport {
                     "// Use Puppeteer to connect to the opened session by port\n" +
                     "   const browserURL = 'http://127.0.0.1:'+Port;\n" +
                     "   const browser = await puppeteer.connect({browserURL});\n" +
-                    "    \n" +
+                    "    \n" + "// open new tab as in MacOS lighthouse not opens a new tab to run\n" +
+                    "  const newTab = browser.newPage(browserURL);\n" +
                     "// Lighthouse connect to the opened page and genrate the report.\n" +
                     "  const options = {logLevel:LogLevel ,output: OutputType, port:Port};\n" +
                     "  const runnerResult = await lighthouse(Url,options,desktopConfig);\n" +
